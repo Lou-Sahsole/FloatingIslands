@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -58,5 +59,10 @@ public class character : MonoBehaviour
 
         currentDamage = Mathf.Clamp(currentDamage + amount, 0, 100);
         Debug.Log(currentDamage + "%");
+    }
+
+    internal static float GetComponent(float x)
+    {
+        throw new NotImplementedException();
     }
 }
