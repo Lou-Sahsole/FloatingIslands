@@ -70,7 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40bb5abcfdd9914fa8b522a52d39986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  campfireDamage: 30
 --- !u!1 &4743224758910154162
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,5 +230,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d1ace928fd3314688c846941869231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 12
   timeInvincible: 0.3
