@@ -14,7 +14,6 @@ public class character : MonoBehaviour
     float invincibleTimer;
 
     Rigidbody2D rigidbody2d;
-    //Vector2 xMovement = Vector2.zero;
 
     float move = 0f;
     private Vector3 m_Velocity = Vector3.zero;
@@ -30,13 +29,6 @@ public class character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //float horizontalR = Input.GetAxis("Horizontal");
-        //Vector2 position = rigidbody2d.position;
-        //position.x += speed * horizontalR * Time.deltaTime;
-        //transform.position = position;
-
-        //xMovement = new Vector2(Input.GetAxis("Horizontal"), 0);
-        //Debug.Log(xMovement);
         move = (Input.GetAxisRaw("Horizontal") * speed);
                 
         if (isInvincible)
@@ -51,9 +43,6 @@ public class character : MonoBehaviour
 
     void FixedUpdate()
     {
-        //rigidbody2d.velocity += (xMovement * speed * Time.deltaTime);
-        //Debug.Log(xMovement * speed * Time.deltaTime);
-
         // Move the character by finding the target velocity
         Vector3 targetVelocity = new Vector2(move * 10f * Time.deltaTime, rigidbody2d.velocity.y);
         // And then smoothing it out and applying it to the character
