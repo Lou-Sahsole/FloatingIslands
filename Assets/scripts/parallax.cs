@@ -83,8 +83,8 @@ public class parallax : MonoBehaviour
         lengthx = GetComponent<SpriteRenderer>().bounds.size.x;
         lengthy = GetComponent<SpriteRenderer>().bounds.size.y;
 
-        Debug.Log(gameObject.name + " Position:" + transform.position);
-        Debug.Log("StartPosX: " + startposx + " | StartPosY: " + startposy + " | LengthX: " + lengthx + " | LengthY: " + lengthy);
+        //Debug.Log(gameObject.name + " Position:" + transform.position);
+        //Debug.Log("StartPosX: " + startposx + " | StartPosY: " + startposy + " | LengthX: " + lengthx + " | LengthY: " + lengthy);
     }
 
     // Update is called once per frame
@@ -96,8 +96,8 @@ public class parallax : MonoBehaviour
         float disty = (cam.transform.position.y * parallaxEffect);
         transform.position = new Vector2(startposx + distx, startposy + disty);
 
-        Debug.Log(gameObject.name + " Position:" + transform.position);
-        Debug.Log("StartPosX: " + startposx + " | StartPosY: " + startposy + " | DistX: " + distx + " | DistY: " + disty + " | TempX: " + tempx + " | TempY: " + tempy);
+        //Debug.Log(gameObject.name + " Position:" + transform.position);
+        //Debug.Log("StartPosX: " + startposx + " | StartPosY: " + startposy + " | DistX: " + distx + " | DistY: " + disty + " | TempX: " + tempx + " | TempY: " + tempy);
 
         if (tempx > startposx + lengthx)
         {

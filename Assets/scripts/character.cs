@@ -6,14 +6,19 @@ using UnityEngine.UI;
 
 public class character : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 50f;
     float currentDamage = 0;
 
-    public float timeInvincible = 0.5f;
+    public float timeInvincible = 0.3f;
     bool isInvincible;
     float invincibleTimer;
 
     Rigidbody2D rigidbody2d;
+    //Vector2 xMovement = Vector2.zero;
+
+    float move = 0f;
+    private Vector3 m_Velocity = Vector3.zero;
+    [Range(0, .3f)]    [SerializeField]    private float m_MovementSmoothing = .05f;
 
     // Start is called before the first frame update
     void Awake()
@@ -25,12 +30,15 @@ public class character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalR = Input.GetAxis("Horizontal");
+        //float horizontalR = Input.GetAxis("Horizontal");
+        //Vector2 position = rigidbody2d.position;
+        //position.x += speed * horizontalR * Time.deltaTime;
+        //transform.position = position;
 
-        Vector2 position = rigidbody2d.position;
-        position.x += speed * horizontalR * Time.deltaTime;
-        transform.position = position;
-
+        //xMovement = new Vector2(Input.GetAxis("Horizontal"), 0);
+        //Debug.Log(xMovement);
+        move = (Input.GetAxisRaw("Horizontal") * speed);
+                
         if (isInvincible)
         {
             invincibleTimer -= Time.deltaTime;
@@ -39,6 +47,17 @@ public class character : MonoBehaviour
                 isInvincible = false;
             }
         }
+    }
+
+    void FixedUpdate()
+    {
+        //rigidbody2d.velocity += (xMovement * speed * Time.deltaTime);
+        //Debug.Log(xMovement * speed * Time.deltaTime);
+
+        // Move the character by finding the target velocity
+        Vector3 targetVelocity = new Vector2(move * 10f * Time.deltaTime, rigidbody2d.velocity.y);
+        // And then smoothing it out and applying it to the character
+        rigidbody2d.velocity = Vector3.SmoothDamp(rigidbody2d.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
     }
 
     public void ChangeDamage(int amount)

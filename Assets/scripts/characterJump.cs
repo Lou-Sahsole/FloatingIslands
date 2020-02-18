@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class characterJump : MonoBehaviour
 {
-    public float fallMultiplier = 2.5f;
-    public float lowJumpMultiplier = 2f;
-    public float jumpVelocity = 10f;
-    public float floatStop = 2f;
+    public float fallMultiplier = 2f;
+    public float lowJumpMultiplier = 5f;
+    public float jumpVelocity = 20f;
 
     Rigidbody2D rigidbody2d;
 
@@ -25,21 +24,20 @@ public class characterJump : MonoBehaviour
 
         if (Input.GetButtonDown ("Jump") && isGrounded == true)
         {
-            rigidbody2d.velocity = Vector2.up * jumpVelocity;
+            rigidbody2d.velocity += (Vector2.up * jumpVelocity);
+            //Debug.Log("Jumped");
         }
 
-        if (rigidbody2d.velocity.y > 0 && rigidbody2d.velocity.y < floatStop)
-        {
-            rigidbody2d.velocity = Vector2.zero;
-        }
 
         if (rigidbody2d.velocity.y < 0)
         {
-            rigidbody2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            rigidbody2d.velocity += (Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime);
+            //Debug.Log("Falling");
         }
         else if (rigidbody2d.velocity.y > 0 && !Input.GetButton("Jump"))
         {
-            rigidbody2d.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            rigidbody2d.velocity += (Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime);
+            //Debug.Log("Jump Stopped");
         }
     }
 }
