@@ -6,14 +6,16 @@ using UnityEngine.UI;
 
 public class character : MonoBehaviour
 {
+    //Character Stats
     public float speed = 50f;
     float currentDamage = 0;
-
     public float timeInvincible = 0.3f;
     bool isInvincible;
     float invincibleTimer;
+    bool m_FacingRight = true;
 
     Rigidbody2D rigidbody2d;
+    public Animator animator;
 
     float move = 0f;
     private Vector3 m_Velocity = Vector3.zero;
@@ -29,8 +31,23 @@ public class character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Movement
         move = (Input.GetAxisRaw("Horizontal") * speed);
-                
+
+        if (move > 0 && !m_FacingRight)
+        {
+            Flip();
+        }
+        else if (move < 0 && m_FacingRight)
+        {
+            Flip();
+        }
+
+        // Animations
+        animator.SetFloat("speed", Mathf.Abs(move));
+        animator.SetInteger("jumpProgress", characterJump.jumpProgress);
+        
+        // Health
         if (isInvincible)
         {
             invincibleTimer -= Time.deltaTime;
@@ -67,6 +84,15 @@ public class character : MonoBehaviour
 
         currentDamage = Mathf.Clamp(currentDamage + amount, 0, 100);
         Debug.Log(currentDamage + "%");
+    }
+
+    void Flip()
+    {
+        m_FacingRight = !m_FacingRight;
+
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 
     internal static float GetComponent(float x)

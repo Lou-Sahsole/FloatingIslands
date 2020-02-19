@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.67439246, y: 0.29476005}
+  m_Size: {x: 0.94508463, y: 0.104012445}
   m_EdgeRadius: 0
 --- !u!114 &171963460831653516
 MonoBehaviour:
@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 3866918824018518280}
   - component: {fileID: 4743224758910154164}
   - component: {fileID: 2484127872076583439}
+  - component: {fileID: 71612104}
   m_Layer: 8
   m_Name: android
   m_TagString: Untagged
@@ -190,8 +191,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 11}
-  m_Size: {x: 13, y: 22}
+  m_Offset: {x: 0, y: 13.968343}
+  m_Size: {x: 14, y: 29.553127}
   m_Direction: 0
 --- !u!114 &4743224758910154164
 MonoBehaviour:
@@ -222,4 +223,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   timeInvincible: 0.3
+  animator: {fileID: 71612104}
   m_MovementSmoothing: 0.049
+--- !u!95 &71612104
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4743224758910154162}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 215bf9af2900aa74abbf3efbdc7930a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

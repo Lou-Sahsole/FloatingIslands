@@ -17,6 +17,7 @@ public class characterJump : MonoBehaviour
     }
 
     public static bool isGrounded;
+    public static int jumpProgress;
 
     // Update is called once per frame
     void Update()
@@ -25,19 +26,19 @@ public class characterJump : MonoBehaviour
         if (Input.GetButtonDown ("Jump") && isGrounded == true)
         {
             rigidbody2d.velocity += (Vector2.up * jumpVelocity);
-            //Debug.Log("Jumped");
+            jumpProgress = 1;
         }
 
 
         if (rigidbody2d.velocity.y < 0)
         {
             rigidbody2d.velocity += (Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime);
-            //Debug.Log("Falling");
+            jumpProgress = 2;
         }
         else if (rigidbody2d.velocity.y > 0 && !Input.GetButton("Jump"))
         {
             rigidbody2d.velocity += (Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime);
-            //Debug.Log("Jump Stopped");
+            jumpProgress = 2;
         }
     }
 }

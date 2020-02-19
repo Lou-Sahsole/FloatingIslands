@@ -10,6 +10,7 @@ public class GroundCheckScript : MonoBehaviour
         if (GroundCheck == null)
         {
             characterJump.isGrounded = true;
+            characterJump.jumpProgress = 3;
             //Debug.Log("Grounded");
         }
     }
